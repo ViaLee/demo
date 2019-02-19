@@ -21,7 +21,7 @@ var server = http.createServer(function(request, response){
 
   console.log('方方说：含查询字符串的路径\n' + pathWithQuery)
 
-  if(path === '/index.html'){
+  if(path === '/'){
     response.setHeader('Content-Type', 'text/html;charset=utf-8')
     response.write('<!DOCTYPE>\n<html><head><link rel="stylesheet" href="style.css"></head></body><h1>你好</h1><script src="/script.js"></script></body></html>')
     response.end()
