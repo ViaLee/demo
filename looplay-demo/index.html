@@ -5,37 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
-    <style>
-            .main{
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-                }
-            .show{
-                width: 300px;
-                height: 300px;
-                overflow: hidden;
-            }
-            #images{
-                display: flex;
-                align-items: flex-start;
-                transition: all 1s;
-            }
-            .images > img{
-                vertical-align: top;
-            }
-            .button{
-                color: #bee2e7;
-                margin: 0 auto;
-                cursor: pointer;
-            }
-            .button span{
-                margin-right: 10px;
-            }
-            .color{
-                color:#497d83;
-            }
-            </style>
     <title>一个轮播</title>
 </head>
 <body>
@@ -59,6 +28,38 @@
     </div>
 </body>
 </html>
+<style>
+        .main{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            }
+        .show{
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+        }
+        #images{
+            display: flex;
+            align-items: flex-start;
+            transition: all 1s;
+        }
+        .images > img{
+            vertical-align: top;
+        }
+        .button{
+            color: #bee2e7;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+        .button span{
+            margin-right: 10px;
+        }
+        .color{
+            color:#497d83;
+        }
+        </style>
+
 <script>
 var span = $('.button > span')
 var n=0
