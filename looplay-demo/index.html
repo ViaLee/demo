@@ -38,8 +38,6 @@ for(let i=0;i<span.length;i++){
     // $span.on('click', function(x){
     // $span[i].on('click', function(x){    注意分清楚dom和jQuery对象
     $(span[i]).on('click', function(x){
-        // var num = x.target.textContent
-        // var p = (num-1)* -300
         var index = $(x.currentTarget).index()   //currentTarget标识事件的当前目标
         var p = index*-300
         $('#images').css({
@@ -60,10 +58,9 @@ $('#images').on('mouseleave',function (){
 
 
 function setTime(){
-    setInterval(()=>{
-    // $(span[i]).trigger('click').removeClass('red').addClass('red')
-    changeImg()
-},3000)
+    return setInterval(()=>{
+        changeImg()
+    },4000)
 }
 function changeClass(aspan){
     aspan.addClass('color')
