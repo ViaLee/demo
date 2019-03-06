@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <title>一个轮播</title>
+</head>
+<body>
+    <div class="main">
+    <div class="show">
+        <div id="images">
+            <img src="img/1.jpeg" alt="1" width="300" height="300">
+            <img src="img/2.jpeg" alt="2" width="300" height="300">
+            <img src="img/3.jpeg" alt="3" width="300" height="300">
+            <img src="img/4.jpeg" alt="4" width="300" height="300">
+            <img src="img/5.jpeg" alt="5" width="300" height="300">
+        </div>
+    </div>
+    <div class="button">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+var span = $('.button > span')
+var n=0
+var timeId = setTime()
+
+$(span[0]).addClass('color')
+for(let i=0;i<span.length;i++){
+    // $span.on('click', function(x){
+    // $span[i].on('click', function(x){    注意分清楚dom和jQuery对象
+    $(span[i]).on('click', function(x){
+        // var num = x.target.textContent
+        // var p = (num-1)* -300
+        var index = $(x.currentTarget).index()   //currentTarget标识事件的当前目标
+        var p = index*-300
+        $('#images').css({
+            transform: 'translateX('+ p +'px)'
+        })
+        changeClass($(span[i]))
+        n=index
+    })
+}
+$('#images').on('mouseenter',function (){
+    window.clearInterval(timeId)
+})
+
+$('#images').on('mouseleave',function (){
+    console.log('leave')
+    timeId = setTime()
+})
+
+
+function setTime(){
+    setInterval(()=>{
+    // $(span[i]).trigger('click').removeClass('red').addClass('red')
+    changeImg()
+},3000)
+}
+function changeClass(aspan){
+    aspan.addClass('color')
+        .siblings('.color')
+        .removeClass('color')
+}
+
+function changeImg(){
+    n += 1
+    var i = n%span.length
+    $(span[i]).trigger('click')
+}
+</script>
+<style>
+.main{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    }
+.show{
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+}
+#images{
+    display: flex;
+    justify-content: flex-start;
+    transition: all 1s;
+}
+.images > img{
+    vertical-align: top;
+}
+.button{
+    color: #bee2e7;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.button span{
+    margin-right: 10px;
+}
+.color{
+    color:#497d83;
+}
+</style>
