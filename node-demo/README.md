@@ -26,3 +26,8 @@ script.src="http://B.com"+functionName
         delete window[functionName]
     }
  ```
+修改host
+vi /etc/hosts
+127.0.0.1       frank.com
+修改端口号启动
+PORT=8002 node server1.js 8002
