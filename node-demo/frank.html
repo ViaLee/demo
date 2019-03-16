@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>frank</title>
+</head>
+<body>
+    余额：
+    <span id="amount">&&&amount&&&</span>
+    <button id="button">打钱</button>
+</body>
+</html>
+<script>
+    var functionName = 'frank' + parseInt(Math.random()*10000, 10)
+button.addEventListener('click',(e)=>{
+    let script = document.createElement('script')
+    script.src = 'http://jack.com:8002/pay?callback=' + functionName
+    document.body.appendChild(script)
+    window[functionName] = function (result) {
+        if(result === 'success'){
+            console.log('success')
+            amount.innerText = amount.innerText - 1
+        }
+    }
+    script.onload = function (e) {
+        e.currentTarget.remove()
+        delete window[functionName]
+    }
+    script.onerror = function (e) {
+        e.currentTarget.remove()
+        delete window[functionName]
+    }
+})
+</script>
